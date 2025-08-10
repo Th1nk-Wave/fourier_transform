@@ -135,12 +135,12 @@ int main(int argc, char** argv) {
     int numDevices = Pa_GetDeviceCount();
     const PaDeviceInfo* info;
 
-    int selectedDevice = 10;
+    int selectedDevice = 0;
 
     for (int i = 0; i < numDevices; ++i) {
         info = Pa_GetDeviceInfo(i);
         printf("[%d] %s (%s)\n", i, info->name, Pa_GetHostApiInfo(info->hostApi)->name);
-        if (strcmp(info->name, "Default Sink (PulseAudio)")) {selectedDevice = i;}
+        if (strcmp(info->name, "Default Sink")==0) {selectedDevice = i;}
     }
     
     const PaDeviceInfo* deviceInfo = Pa_GetDeviceInfo(selectedDevice);
